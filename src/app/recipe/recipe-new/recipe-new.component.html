@@ -1,0 +1,5 @@
+<h1>Add New Recipe</h1>
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="Recipe Name" formControlName="name">
+    <button>Submit</button>
+</form>

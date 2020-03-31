@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Recipe } from '../recipe';
 
 @Component({
   selector: "app-recipe",
@@ -6,7 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./recipe.component.css"]
 })
 export class RecipeComponent implements OnInit {
-  public recipes: any = [
+  public recipes: Recipe[] = [
     {
       name: "Crock Pot Roast",
       ingredients: [
@@ -121,7 +122,8 @@ export class RecipeComponent implements OnInit {
       ],
       timers: [0, 0, 20, 20, 0],
       imageURL:
-        "http://dagzhsfg97k4.cloudfront.net/wp-content/uploads/2012/05/lentils3.jpg"
+        "http://dagzhsfg97k4.cloudfront.net/wp-content/uploads/2012/05/lentils3.jpg",
+        originalURL:""
     },
     {
       name: "Big Night Pizza",
@@ -178,7 +180,8 @@ export class RecipeComponent implements OnInit {
       ],
       timers: [15, 60, 0, 0, 0, 15, 0],
       imageURL:
-        "http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg"
+        "http://upload.wikimedia.org/wikipedia/commons/c/c7/Spinach_pizza.jpg",
+        originalURL:""
     },
     {
       name: "Cranberry and Apple Stuffed Acorn Squash Recipe",
@@ -513,7 +516,7 @@ export class RecipeComponent implements OnInit {
   viewDetails(recipe:any){
     this.dispRecipe=recipe
   }
-  addNewRecipe(recipe){
+  addNewRecipe(recipe:Recipe){
     this.recipes.push(recipe)
     this.allowAddNew=true
   }

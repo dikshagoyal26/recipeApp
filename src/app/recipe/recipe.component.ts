@@ -506,14 +506,14 @@ export class RecipeComponent implements OnInit {
         "http://www.chatelaine.com/recipe/stovetop-cooking-method/curried-chicken-salad/"
     }
   ];
-  public dispRecipe:any;
+  public dispRecipe:Recipe;
   allowAddNew:boolean=true
   constructor() {}
 
   ngOnInit(): void {
     console.log(this.recipes)
   }
-  viewDetails(recipe:any){
+  viewDetails(recipe:Recipe){
     this.dispRecipe=recipe
   }
   addNewRecipe(recipe:Recipe){

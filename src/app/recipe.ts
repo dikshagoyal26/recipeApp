@@ -9,5 +9,4 @@ export interface Recipe{
     timers:number[],
     imageURL:string,
     originalURL:string
-
 }

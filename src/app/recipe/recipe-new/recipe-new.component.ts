@@ -15,6 +15,7 @@ export class RecipeNewComponent implements OnInit {
   private stepsArr = new FormArray([]);
   private timersArr = new FormArray([]);
   // @Output() newRecipe:EventEmitter<any>=new EventEmitter();
+  private id: number;
   public recipeForm: FormGroup = new FormGroup({
     name: new FormControl("", Validators.required),
     imgURL: new FormControl("", Validators.required),
@@ -25,48 +26,58 @@ export class RecipeNewComponent implements OnInit {
   });
 
 
-  constructor(private display: RecipeService, private route: ActivatedRoute) {
-  
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute,private router:Router) {
     this.route.params.subscribe(
       (params) => {
-      console.log(params)
-      let index = +params['id']
-      console.log(index)
-       if (index) {
-        let recipe = display.getRecipeByID(index)
-        console.log(recipe)
-       
-        this.displayIng(recipe.ingredients);
-        this.recipeForm.patchValue(
-          {
-            name:recipe.name,
-            imageURL:recipe.imageURL,
-            originalURL:recipe.originalURL,
-             ingredients:this.ingredientsArr
-          }
-        )
-       }
-       else{
-        this.addIngredient()
-        this.addStep()
-        this.addTimer()
-      }
-    })
+        console.log(params)
+        let index = +params['id']
+        console.log(index)
+        if (index) {
+          this.id=index
+          let recipe = recipeService.getRecipeByID(index)
+          console.log(recipe)
+          this.displayIngredients(recipe.ingredients);
+          this.displaySteps(recipe.steps);
+          this.displayTimers(recipe.timers);
 
-   
-   
+          this.recipeForm.patchValue(
+            {
+              name: recipe.name,
+              imageURL: recipe.imageURL,
+              originalURL: recipe.originalURL,
+              ingredients: this.ingredientsArr,
+              timers: this.timersArr,
+              steps: this.stepsArr
+            }
+          )
+        }
+        else {
+          this.id = this.recipeService.getLength() + 1
+          this.addIngredient()
+          this.addStep()
+          this.addTimer()
+        }
+      })
   }
-  displayIng(ing:any[])
-  {
-  for(let i=0;i<ing.length;i++)
-  {
-    let form = new FormGroup({
-      quantity: new FormControl(ing[i].quantity, Validators.required),
-      name: new FormControl(ing[i].name, Validators.required),
-      type: new FormControl(ing[i].type, Validators.required)
-    })
-    this.ingredientsArr.push(form)
+  displayIngredients(ing: any[]) {
+    for (let i = 0; i < ing.length; i++) {
+      let form = new FormGroup({
+        quantity: new FormControl(ing[i].quantity, Validators.required),
+        name: new FormControl(ing[i].name, Validators.required),
+        type: new FormControl(ing[i].type, Validators.required)
+      })
+      this.ingredientsArr.push(form)
+    }
   }
+  displaySteps(steps:any[]){
+    for(let i=0;i<steps.length;i++){
+      this.stepsArr.push(new FormControl(steps[i], Validators.required))
+    }
+  }
+  displayTimers(timers:any[]){
+    for(let i=0;i<timers.length;i++){
+      this.timersArr.push(new FormControl(timers[i], Validators.required))
+    }
   }
   addIngredient() {
     let form = new FormGroup({
@@ -100,14 +111,14 @@ export class RecipeNewComponent implements OnInit {
   }
   ngOnInit(): void { }
   onSubmit() {
-    if(this.recipeForm.invalid)
-    {
-      return 
+    if (this.recipeForm.invalid) {
+      return
 
     }
-    else{
+    else {
       console.log(this.recipeForm.controls);
       this.recipe = {
+        id: this.id,
         name: this.recipeForm.controls.name.value,
         ingredients: this.recipeForm.controls.ingredients.value,
         steps: this.recipeForm.controls.steps.value,
@@ -116,10 +127,14 @@ export class RecipeNewComponent implements OnInit {
         originalURL: this.recipeForm.controls.originalURL.value
       }
       console.log(this.recipe)
+      this.recipeService.addNewRecipe(this.recipe)
       // this.newRecipe.emit(this.recipe)
-      this.display.addNewRecipe(this.recipe)
-      // this.router.navigate(['/recipes'])
+      // this.display.addNewRecipe(this.recipe)
+      this.router.navigate(['/recipes'])
     }
-    
+
+  }
+  cancel(){
+    this.router.navigate(['/recipes'])
   }
 }

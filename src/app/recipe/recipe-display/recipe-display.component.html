@@ -1,8 +1,12 @@
-<div class=" col-md-3 card" style="width: 16rem;" >
-    <img class="card-img-top" src="{{recipe.imageURL}}" alt="{{recipe.name}}" *ngIf="recipe.imageURL">
-    <div class="card-body">
-      <h5 class="card-title">{{recipe.name}}</h5>
-      <p class="card-text" *ngIf="recipe.ingredients">Ingredients : {{recipe.ingredients.length}}</p>
-      <a class="btn btn-primary" (click)="viewDetails(recipe)" href="#details">View Details</a>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Recipe List</h1>
+    <button class="btn btn-success" routerLink='/recipes/new-recipe'>Add New Recipe</button>
+    <div class="row">
+      <div *ngFor="let recipe of recipes;let i=index;">
+          <app-recipe-item class="col-md-3" [recipe]="recipe">
+          </app-recipe-item>
+      </div>
     </div>
   </div>
+</div>

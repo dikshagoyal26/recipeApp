@@ -1,58 +1,74 @@
-<h1>Add New Recipe</h1>
-<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label>Recipe Name</label>
-        <input type="text" class="form-control" id="recipeName" placeholder="Enter Recipe Name" formControlName="name">
-    </div>
-    <div class="form-group">
-        <label>Ingredients</label> 
-        <button type="button" class="btn btn-outline-success" (click)="addIngredient()">Add Ingredient</button>
-        <ng-container formArrayName="ingredients">
-            <div *ngFor="let ingredient of recipeForm.get('ingredients')['controls'];let i=index;">
-                <div [formGroupName]="i">
-                    <input type="text" class="form-control" placeholder="Enter Ingredient Name" formControlName="name">
-                    <input type="text" class="form-control" placeholder="Enter Ingredient Quantity" formControlName="quantity">
-                    <input type="text" class="form-control" placeholder="Enter Ingredient Type" formControlName="type">
-                    <button type="button" class="btn btn-outline-danger" (click)="removeIngredient(i)">X</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Add New Recipe</h1>
+            <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label>Recipe Name</label>
+                    <input type="text" class="form-control" id="recipeName" placeholder="Enter Recipe Name"
+                        formControlName="name">
                 </div>
-            </div>
-        </ng-container>
+                <div class="form-group">
+                    <label>Ingredients</label>
+                    <button type="button" class="btn btn-outline-success" (click)="addIngredient()">Add
+                        Ingredient</button>
+                    <ng-container formArrayName="ingredients">
+                        <ol *ngFor="let ingredient of recipeForm.get('ingredients')['controls'];let i=index;">
+                            <li [formGroupName]="i">
+                                <input type="text" class="form-control" placeholder="Enter Ingredient Name"
+                                    formControlName="name">
+                                <input type="text" class="form-control" placeholder="Enter Ingredient Quantity"
+                                    formControlName="quantity">
+                                <input type="text" class="form-control" placeholder="Enter Ingredient Type"
+                                    formControlName="type">
+                                <button type="button" class="btn btn-outline-danger"
+                                    (click)="removeIngredient(i)">X</button>
+                            </li>
+                        </ol>
+                    </ng-container>
 
 
-    </div>
-    <div class="form-group">
-        <label >Steps</label>
-        <button type="button" class="btn btn-outline-success" (click)="addStep()">Add Step</button>
-        <div formArrayName="steps">
-            <ol >
-                <li *ngFor="let step of recipeForm.get('steps')['controls'];let i=index">
-                    <input type="text" class="form-control" placeholder="Enter step {{i+1}}" [formControlName]="i">
-                    <button type="button" class="btn btn-outline-danger" (click)="removeStep(i)">X</button>
-                </li>
-            </ol>
+                </div>
+                <div class="form-group">
+                    <label>Steps</label>
+                    <button type="button" class="btn btn-outline-success" (click)="addStep()">Add Step</button>
+                    <div formArrayName="steps">
+                        <ol>
+                            <li *ngFor="let step of recipeForm.get('steps')['controls'];let i=index">
+                                <input type="text" class="form-control" placeholder="Enter step {{i+1}}"
+                                    [formControlName]="i">
+                                <button type="button" class="btn btn-outline-danger" (click)="removeStep(i)">X</button>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Timers</label>
+                    <button type="button" class="btn btn-outline-success" (click)="addTimer()">Add Timer</button>
+                    <div formArrayName="timers">
+                        <ol>
+                            <li *ngFor="let timer of recipeForm.get('timers')['controls'];let i=index">
+                                <input type="text" class="form-control" placeholder="Enter step {{i+1}}"
+                                    [formControlName]="i">
+                                <button type="button" class="btn btn-outline-danger" (click)="removeTimer(i)">X</button>
+                            </li>
+                        </ol>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <label>Image URL</label>
+                    <input type="text" class="form-control" id="imgURL" placeholder="Enter Image URL"
+                        formControlName="imgURL">
+                </div>
+                <div class="form-group">
+                    <label>Original URL</label>
+                    <input type="text" class="form-control" id="originalURL" placeholder="Enter Original URL"
+                        formControlName="originalURL">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
-    <div class="form-group">
-        <label >Timers</label>
-        <button type="button" class="btn btn-outline-success" (click)="addTimer()">Add Timer</button>
-        <div formArrayName="timers">
-            <ol >
-                <li *ngFor="let timer of recipeForm.get('timers')['controls'];let i=index">
-                    <input type="text" class="form-control" placeholder="Enter step {{i+1}}" [formControlName]="i">
-                    <button type="button" class="btn btn-outline-danger" (click)="removeTimer(i)">X</button>
-                </li>
-            </ol>
-        </div>
-
-
-    </div>
-    <div class="form-group">
-        <label>Image URL</label>
-        <input type="text" class="form-control" id="imgURL" placeholder="Enter Image URL" formControlName="imgURL">
-    </div>
-    <div class="form-group">
-        <label>Original URL</label>
-        <input type="text" class="form-control" id="originalURL" placeholder="Enter Original URL" formControlName="originalURL">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+</div>

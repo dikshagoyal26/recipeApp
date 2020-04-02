@@ -1,0 +1,16 @@
+.form-control{
+display: inline-block;
+width: 260px;
+/* text-align: center; */
+
+}
+h1{
+    text-align: center;
+    margin: 20px;
+}
+label{
+    margin-right: 5px;
+}
+input{
+    margin:  5px;
+}

@@ -1,8 +1,10 @@
-<div >
+<div>
     <img src="{{recipe.imageURL}}">
     <h2>{{recipe.name}}</h2>
+    <button class="btn btn-info" (click)="editRecipe(recipe.id)"> Edit Recipe</button>
+
     <h4>Ingredients</h4>
-    <ol >
+    <ol>
         <li *ngFor="let ingredient of recipe.ingredients">
             <p>Name : {{ingredient.name}}</p>
             <p>Quantity : {{ingredient.quantity}}</p>
@@ -16,5 +18,4 @@
             <p>{{step}}</p>
         </li>
     </ol>
-
 </div>

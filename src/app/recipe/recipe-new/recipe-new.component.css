@@ -1,15 +1,47 @@
 .form-control {
-  display: inline-block;
-  width: 260px;
+  /* display: inline-block; */
+  /* width: 260px; */
   /* text-align: center; */
 }
 h1 {
   text-align: center;
   margin: 20px;
 }
-label {
+/* label {
   margin-right: 5px;
 }
 input {
   margin: 5px;
+} */
+
+ ol li div{
+  display: inline-block;
+}
+.nestedinputs div{
+  padding-right: 0;
+}
+.addbtn{
+  background: transparent;
+  border: 1px green dashed;
+}
+.addbtn:hover{
+  /* background: green; */
+  color: green;
+}
+.removebtn{
+  border: 1px red dashed;
+    background: transparent;
+    border-radius: 20px;
+    padding: 0px 15px;
+    font-weight: bolder;
+
+}
+.removebtn:hover{
+  color: red;
+}
+.nestedinputs{
+  margin-bottom: 5px;
+}
+.fbtn{
+  margin: 10px;
 }

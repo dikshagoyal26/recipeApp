@@ -1,12 +1,15 @@
 <div class="card">
-    <div  style="width: 16rem;" >
+    <div   >
       <img class="card-img-top" src="{{recipe.imageURL}}" alt="{{recipe.name}}" *ngIf="recipe.imageURL">
       <div class="card-body">
         <h5 class="card-title">{{recipe.name}}</h5>
         <p class="card-text" *ngIf="recipe.ingredients">Ingredients : {{recipe.ingredients.length}}</p>
         <!-- <a class="btn btn-primary" routerLink="/recipes/{{i}}" href="#details">View Details</a> -->
-  
-        <a class="btn btn-primary" (click)="viewDetails(recipe.id)" >View Details</a>
+       
+      </div>
+      <div class="card-footer">
+        <a  (click)="viewDetails(recipe.id)" >View Details</a>
+
       </div>
     </div>
   </div>

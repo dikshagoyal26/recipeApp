@@ -12,6 +12,8 @@ export class RecipeDetailComponent implements OnInit {
   // public recipes:Recipe[];
   public recipe:Recipe;
   constructor(private route:ActivatedRoute,private recipeService:RecipeService,public router:Router)  { 
+    window.scroll(0,0);
+
     this.route.params.subscribe((params)=>{
       let id=params['id']
       this.recipe=this.recipeService.getRecipeByID(id);

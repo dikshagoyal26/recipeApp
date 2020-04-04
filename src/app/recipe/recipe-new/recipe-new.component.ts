@@ -26,28 +26,28 @@ export class RecipeNewComponent implements OnInit {
   });
 
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute,private router:Router) {
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute, public router: Router) {
     this.route.params.subscribe(
       (params) => {
         console.log(params)
         let index = +params['id']
         console.log(index)
         if (index) {
-          this.id=index
+          this.id = index
           let recipe = recipeService.getRecipeByID(index)
           console.log(recipe)
           this.displayIngredients(recipe.ingredients);
           this.displaySteps(recipe.steps);
           this.displayTimers(recipe.timers);
 
-          this.recipeForm.patchValue(
+          this.recipeForm.setValue(
             {
               name: recipe.name,
-              imageURL: recipe.imageURL,
-              originalURL: recipe.originalURL,
               ingredients: this.ingredientsArr,
               timers: this.timersArr,
-              steps: this.stepsArr
+              steps: this.stepsArr,
+              imageURL: recipe.imageURL,
+              originalURL: recipe.originalURL,  
             }
           )
         }
@@ -69,13 +69,13 @@ export class RecipeNewComponent implements OnInit {
       this.ingredientsArr.push(form)
     }
   }
-  displaySteps(steps:any[]){
-    for(let i=0;i<steps.length;i++){
+  displaySteps(steps: any[]) {
+    for (let i = 0; i < steps.length; i++) {
       this.stepsArr.push(new FormControl(steps[i], Validators.required))
     }
   }
-  displayTimers(timers:any[]){
-    for(let i=0;i<timers.length;i++){
+  displayTimers(timers: any[]) {
+    for (let i = 0; i < timers.length; i++) {
       this.timersArr.push(new FormControl(timers[i], Validators.required))
     }
   }
@@ -99,13 +99,16 @@ export class RecipeNewComponent implements OnInit {
     // this.timersArr.push(form)
   }
   removeIngredient(index: number) {
+    if(this.ingredientsArr.length==1) return
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index)
   }
   removeStep(index: number) {
+    if(this.stepsArr.length==1) return
     (<FormArray>this.recipeForm.get('steps')).removeAt(index)
 
   }
   removeTimer(index: number) {
+    if(this.timersArr.length==1) return
     (<FormArray>this.recipeForm.get('timers')).removeAt(index)
 
   }
@@ -134,7 +137,7 @@ export class RecipeNewComponent implements OnInit {
     }
 
   }
-  cancel(){
+  cancel() {
     this.router.navigate(['/recipes'])
   }
 }

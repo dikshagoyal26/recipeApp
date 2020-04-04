@@ -1,5 +1,5 @@
 import { Recipe } from '../recipe';
-import { HttpClient } from '@angular/common/http';
+// import { HttpClient } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
 import { recipes } from '../recipes'
@@ -7,7 +7,7 @@ import { recipes } from '../recipes'
 export class RecipeService {
     public recipes: Recipe[];
     // private firebaserecipes:Recipe[]
-    constructor(private http:HttpClient) {
+    constructor() { //private http:HttpClient
         this.recipes = recipes
     }
     getRecipeByID(id: number) {

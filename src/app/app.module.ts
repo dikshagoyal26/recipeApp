@@ -10,6 +10,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RecipeDisplayComponent } from './recipe/recipe-display/recipe-display.component';
 import { RecipeService } from './services/recipe.service';
 import { RecipeItemComponent } from './recipe/recipe-display/recipe-item/recipe-item.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -18,14 +22,17 @@ import { RecipeItemComponent } from './recipe/recipe-display/recipe-item/recipe-
     RecipeDetailComponent,
     RecipeNewComponent,
     RecipeDisplayComponent,
-    RecipeItemComponent
+    RecipeItemComponent,
+    HeaderComponent,
+    FooterComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [RecipeService],
+  providers: [RecipeService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

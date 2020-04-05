@@ -5,6 +5,7 @@ import { RecipeNewComponent } from "./recipe/recipe-new/recipe-new.component";
 import { RecipeDetailComponent } from "./recipe/recipe-detail/recipe-detail.component";
 import { RecipeDisplayComponent } from './recipe/recipe-display/recipe-display.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
 
@@ -22,11 +23,13 @@ const routes: Routes = [
       },
       {
         path: "edit-recipe/:id",
-        component: RecipeNewComponent
+        component: RecipeNewComponent,
+        canActivate:[AuthGuard]
       },
       {
         path: "new-recipe",
-        component: RecipeNewComponent
+        component: RecipeNewComponent,
+        canActivate:[AuthGuard]
       }
     ]
   },

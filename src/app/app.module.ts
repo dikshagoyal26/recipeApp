@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [RecipeService,AuthService],
+  providers: [RecipeService,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

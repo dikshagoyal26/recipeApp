@@ -10,7 +10,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public loginForm:FormGroup; 
-  constructor(public router:Router,private authService:AuthService) { 
+  constructor(public router:Router,public authService:AuthService) { 
+
     this.loginForm=new FormGroup({
       email: new FormControl("",Validators.required), ///^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       password:new FormControl("",Validators.required)//^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{6,}$ //,Validators.minLength(6),

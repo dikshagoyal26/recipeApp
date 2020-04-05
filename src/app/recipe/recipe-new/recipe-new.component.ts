@@ -43,11 +43,11 @@ export class RecipeNewComponent implements OnInit {
           this.recipeForm.setValue(
             {
               name: recipe.name,
+              imgURL: recipe.imageURL,
+              originalURL: recipe.originalURL,
               ingredients: this.ingredientsArr,
               timers: this.timersArr,
               steps: this.stepsArr,
-              imageURL: recipe.imageURL,
-              originalURL: recipe.originalURL,  
             }
           )
         }
@@ -99,16 +99,16 @@ export class RecipeNewComponent implements OnInit {
     // this.timersArr.push(form)
   }
   removeIngredient(index: number) {
-    if(this.ingredientsArr.length==1) return
+    if (this.ingredientsArr.length == 1) return
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index)
   }
   removeStep(index: number) {
-    if(this.stepsArr.length==1) return
+    if (this.stepsArr.length == 1) return
     (<FormArray>this.recipeForm.get('steps')).removeAt(index)
 
   }
   removeTimer(index: number) {
-    if(this.timersArr.length==1) return
+    if (this.timersArr.length == 1) return
     (<FormArray>this.recipeForm.get('timers')).removeAt(index)
 
   }

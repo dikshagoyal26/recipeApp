@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
   public registerForm:FormGroup;
   constructor(public router:Router,private authService:AuthService) { 
     this.registerForm=new FormGroup({
-      name:new FormControl("",Validators.required),
+      // name:new FormControl("",Validators.required),
       email:new FormControl("",Validators.required),
       password:new FormControl("",Validators.required)
     })
@@ -24,8 +24,8 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.invalid){
       return
     }
-    let user:any={
-      name:this.registerForm.controls.name.value,
+    let user:{}={
+      // name:this.registerForm.controls.name.value,
       email:this.registerForm.controls.email.value,
       password:this.registerForm.controls.password.value
     }

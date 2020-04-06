@@ -3,11 +3,12 @@ import { Recipe } from '../recipe';
 
 import { Injectable } from '@angular/core';
 import { recipes } from '../recipes'
+import { HttpRequest } from '@angular/common/http';
 @Injectable()
 export class RecipeService {
     public recipes: Recipe[];
     // private firebaserecipes:Recipe[]
-    constructor() { //private http:HttpClient
+    constructor() {  //private http:HttpClient
         this.recipes = recipes
     }
     getRecipeByID(id: number) {
@@ -21,6 +22,8 @@ export class RecipeService {
             this.recipes.push(recipe)
     }
     fetchAllRecipes() {
+        // let recipes=this.http.get('https://recipeapp26.firebaseio.com/')
+        console.log(recipes)
         return this.recipes.slice()
     }
     getLength() {

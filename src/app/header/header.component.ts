@@ -32,5 +32,9 @@ export class HeaderComponent implements OnInit {
     }
     console.log(user)
     this.authService.loginUser(user)
+    this.loginForm.setValue({
+      password:"",
+      email:""
+    })
   }
 }

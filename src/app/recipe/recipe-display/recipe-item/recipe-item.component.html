@@ -7,7 +7,7 @@
         <!-- <a class="btn btn-primary" routerLink="/recipes/{{i}}" href="#details">View Details</a> -->
        
       </div>
-      <div class="card-footer" (click)="viewDetails(recipe.id)">
+      <div class="card-footer" ng-disabled="!authStatus" (click)="viewDetails(recipe.id)">
         View Details
       </div>
     </div>

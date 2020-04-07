@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase'
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class AuthService{
     private token:string=null;
+    public authStatus=new Subject<boolean>();
+
     constructor(private router:Router){}
     registerUser(user:any){
         console.log(user)
@@ -14,6 +17,7 @@ export class AuthService{
             firebase.auth().currentUser.getIdToken().then((token:string)=>{
                 this.token=token;
             })
+            this.setStatus(true)
         }).catch(err=>{
             console.log(err)
         })
@@ -25,8 +29,11 @@ export class AuthService{
             firebase.auth().currentUser.getIdToken().then((token:string)=>{
                 this.token=token;
             })
+            this.setStatus(true)
+            return true;
         }).catch(err=>{
-            console.log(err)
+            console.log(err)   
+            return err;   
         })
     }
     getToken(){
@@ -41,5 +48,9 @@ export class AuthService{
     logOut(){
         this.token=null;
         firebase.auth().signOut();
+        this.setStatus(false)
+    }
+    setStatus(value:boolean){
+        this.authStatus.next(value)
     }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recipe } from 'src/app/recipe';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-recipe-item',
@@ -9,7 +10,12 @@ import { Router } from '@angular/router';
 })
 export class RecipeItemComponent implements OnInit {
  @Input() recipe:Recipe;
-  constructor(private router:Router) { }
+ public authStatus:boolean=false;
+  constructor(private router:Router,private authService:AuthService) { 
+    this.authService.authStatus.subscribe((status:boolean)=>{
+      this.authStatus=status
+    })
+  }
 
   ngOnInit(): void {
   }

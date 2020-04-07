@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginUser(){
+ async loginUser(){
     console.log(this.loginForm)
     if(this.loginForm.invalid){
       return;
@@ -31,10 +31,17 @@ export class HeaderComponent implements OnInit {
       password:this.loginForm.controls.password.value
     }
     console.log(user)
-    this.authService.loginUser(user)
+    let status:any=await this.authService.loginUser(user)
+    if(status==true){
     this.loginForm.setValue({
       password:"",
       email:""
     })
+    }
+    else{
+      console.log({status})
+      alert(status)
+    }
+
   }
 }

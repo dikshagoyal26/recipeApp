@@ -6,6 +6,7 @@ import { RecipeDetailComponent } from "./recipe/recipe-detail/recipe-detail.comp
 import { RecipeDisplayComponent } from './recipe/recipe-display/recipe-display.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { ShoppingComponent } from './shopping/shopping.component';
 
 const routes: Routes = [
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:"register-user",
     component:RegisterComponent
+  },
+  {
+    path:"cart",
+    component:ShoppingComponent
   },
   { path: '',
   redirectTo: '/recipes',

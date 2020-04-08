@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { RecipeService } from '../services/recipe.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: "app-recipe",
@@ -7,10 +8,16 @@ import { RecipeService } from '../services/recipe.service';
   styleUrls: ["./recipe.component.css"]
 })
 export class RecipeComponent implements OnInit {
-  constructor(private recipeService:RecipeService) {
+  private readonly notifier: NotifierService;
+
+  constructor(private recipeService:RecipeService,notifierService: NotifierService) {
     this.recipeService.fetchAllRecipes()
+    this.notifier = notifierService;
+
   }
 
   ngOnInit(): void {
+    this.notifier.notify("success", "You are awesome! I mean it!");
+
   }
 }

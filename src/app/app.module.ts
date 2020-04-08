@@ -18,6 +18,8 @@ import { AuthGuard } from "./services/auth-guard.service";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AppInterceptor } from "./app.interceptor";
 import { NotifierModule } from "angular-notifier";
+import { ShoppingComponent } from './shopping/shopping.component';
+import { ShoppingService } from './services/shopping.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { NotifierModule } from "angular-notifier";
     HeaderComponent,
     FooterComponent,
     RegisterComponent,
+    ShoppingComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { NotifierModule } from "angular-notifier";
     RecipeService,
     AuthService,
     AuthGuard,
+    ShoppingService,
     { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

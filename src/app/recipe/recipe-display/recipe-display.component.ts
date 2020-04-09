@@ -11,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RecipeDisplayComponent implements OnInit {
   public recipes: Recipe[];
   public authStatus:boolean=false;
-
+  person={
+    country:'UK'}
   constructor(private recipeService: RecipeService,private authService:AuthService) {
     this.recipes = this.recipeService.fetchAllRecipes();
     this.authService.authStatus.subscribe((status:boolean)=>{

@@ -1,0 +1,42 @@
+.container-fluid{
+    padding: 0;
+    /* margin-top: 60px; */
+    height: 50vh;
+}
+.reg-user{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    /* padding: 15px; */
+    
+}
+.wrap{
+    background: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    /* box-shadow: 10px 10px 5px #aaaaaa; */
+
+}
+
+.title{
+    width: 100%;
+    background-color: rgba(54,84,99,0.7);
+    padding: 70px 15px 74px 15px;
+    font-family: Poppins-Bold;
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.2;
+    text-align: center;
+    background: url('../../../assets/register-background.jpg');
+    background-attachment: fixed;
+    background-position: center;
+}
+
+form{
+    padding: 30px;
+}
+label{
+    text-align: right;
+}

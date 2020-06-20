@@ -1,0 +1,46 @@
+<ng-template #registerTemplate>
+    <app-register></app-register>
+
+    <!-- <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body"> -->
+       
+      <!-- Just a modal with a bunch of words inside, nothing serious. -->
+    <!-- </div> -->
+  </ng-template>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">RecipeApp</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse row" id="navbarNav">
+            <ul class="offset-lg-8 col-lg-4  navbar-nav" *ngIf="authService.isAuthenticated()">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li> -->
+                <li class="nav-item">
+                  <a href="" class="nav-link">Starred Recipes</a>
+                </li>
+                <li class="nav-item">
+                  <a href="/cart" class="nav-link">Cart</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-danger" (click)="authService.logOut()">Logout</button>
+                </li>
+            </ul>
+            <form class="offset-lg-6 form-inline my-2 my-lg-0" *ngIf="!authService.isAuthenticated()" (ngSubmit)="loginUser()" [formGroup]="loginForm">
+                <input class="form-control mr-sm-2" type="email" placeholder="Email" formControlName="email">
+                <input class="form-control mr-sm-2" type="password" placeholder="Password" formControlName="password">
+                <button class="btn btn-outline-success my-2 my-sm-0 mr-2" type="submit">Login</button>
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="router.navigate(['/register-user'])">New User</button> -->
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="openModal(registerTemplate)">New User</button>
+              </form>
+        </div>
+    </div>
+</nav> 

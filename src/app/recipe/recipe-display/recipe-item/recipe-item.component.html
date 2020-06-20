@@ -1,0 +1,15 @@
+<div class="card">
+  <div>
+    <img class="card-img-top" [src]="recipe.imageURL" alt="{{recipe.name}}" *ngIf="recipe.imageURL">
+    <div class="card-body">
+      <h5 class="card-title">{{recipe.name}}</h5>
+      <p class="card-text" *ngIf="recipe.ingredients">Ingredients : {{recipe.ingredients.length}}</p>
+      <button class="btn btn-success" (click)="addToCart(recipe)">Add To Cart</button>
+      <!-- <a class="btn btn-primary" routerLink="/recipes/{{i}}" href="#details">View Details</a> -->
+
+    </div>
+    <div class="card-footer" ng-disabled="!authStatus" (click)="viewDetails(recipe.id)">
+      View Details
+    </div>
+  </div>
+</div>

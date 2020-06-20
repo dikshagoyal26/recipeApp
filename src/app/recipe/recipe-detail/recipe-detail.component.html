@@ -1,20 +1,33 @@
-<div >
-    <img src="{{recipe.imageURL}}">
-    <h2>{{recipe.name}}</h2>
-    <h4>Ingredients</h4>
-    <ol >
-        <li *ngFor="let ingredient of recipe.ingredients">
-            <p>Name : {{ingredient.name}}</p>
-            <p>Quantity : {{ingredient.quantity}}</p>
+<div class="container">
+    <button class="btn btn-primary" (click)="router.navigate(['']);"> Back</button>
 
-            <p>Type : {{ingredient.type}}</p>
-        </li>
-    </ol>
-    <h4>Steps</h4>
-    <ol>
-        <li *ngFor="let step of recipe.steps">
-            <p>{{step}}</p>
-        </li>
-    </ol>
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+        <h1>{{recipe.name}}</h1>
+    
+        <img [src]="recipe.imageURL">
+        <button class="btn btn-info edit" (click)="editRecipe(recipe.id)"> Edit Recipe</button>
+    
+        <div style="margin-top: 40px;" >
 
+                <h4>Ingredients :</h4>
+                <ul>
+                    <li *ngFor="let ingredient of recipe.ingredients">
+                        <p style="display: inline-block;"> {{ingredient.quantity}} {{ingredient.name}}</p>
+                        <!-- <p>Quantity :</p> -->
+                        <span style="float: right;">Type : {{ingredient.type}}</span>
+                    </li>
+                </ul>
+                <h4>Following are the Steps for the Recipe:</h4>
+                <ul>
+                    <li *ngFor="let step of recipe.steps;">
+                        <p>{{step}}</p>
+                    </li>
+                </ul>
+               </div>
+                
+            </div>
+        
+        </div>
+         
 </div>

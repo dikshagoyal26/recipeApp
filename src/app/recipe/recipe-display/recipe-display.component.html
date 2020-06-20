@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-12">
+    <button class="btn " [ngClass]="!authStatus ? 'disable' : ' btn-success' " routerLink='/recipes/new-recipe'>Add New Recipe</button>
+    <h1>Recipe List</h1>
+    <div class="container" style="margin-top:10px">
+      <div class=" card-deck text-center">
+        <div *ngFor="let recipe of recipes;let i=index;">
+          <app-recipe-item [recipe]="recipe">
+          </app-recipe-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

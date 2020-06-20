@@ -1,27 +1,4 @@
-<!-- <app-header></app-header> -->
+<app-header></app-header>
 <div class="container">
-    <h1>Recipe List</h1>
-    <button class="btn btn-success" (click)="allowAddNew=false" *ngIf="allowAddNew">Add New Recipe</button>
-    <div *ngIf="!allowAddNew">
-      <app-recipe-new (newRecipe)="addNewRecipe($event)"></app-recipe-new>
-    </div>
-    <div class="row">
-
-            <div class=" col-md-3 card" style="width: 16rem;" *ngFor="let recipe of recipes">
-                <img class="card-img-top" src="{{recipe.imageURL}}" alt="{{recipe.name}}">
-                <div class="card-body">
-                  <h5 class="card-title">{{recipe.name}}</h5>
-                  <p class="card-text">Ingredients : {{recipe.ingredients.length}}</p>
-                  <a class="btn btn-primary" (click)="viewDetails(recipe)" href="#details">View Details</a>
-                </div>
-                
-        </div>
-    </div>
-</div>
-
-<div class="container" id="details">
-  <div *ngIf="dispRecipe">
-    <h1>Recipe Details</h1>
-    <app-recipe-detail [recipe]="dispRecipe"></app-recipe-detail>
-  </div>
+  <router-outlet></router-outlet>
 </div>

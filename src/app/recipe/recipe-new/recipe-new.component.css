@@ -14,34 +14,36 @@ input {
   margin: 5px;
 } */
 
- ol li div{
+ol li div {
   display: inline-block;
 }
-.nestedinputs div{
+.nestedinputs div {
   padding-right: 0;
 }
-.addbtn{
+.addbtn {
   background: transparent;
   border: 1px green dashed;
 }
-.addbtn:hover{
+.addbtn:hover {
   /* background: green; */
   color: green;
 }
-.removebtn{
+.removebtn {
   border: 1px red dashed;
-    background: transparent;
-    border-radius: 20px;
-    padding: 0px 15px;
-    font-weight: bolder;
-
+  background: transparent;
+  border-radius: 20px;
+  padding: 0px 15px;
+  font-weight: bolder;
 }
-.removebtn:hover{
+.removebtn:hover {
   color: red;
 }
-.nestedinputs{
+.nestedinputs {
   margin-bottom: 5px;
 }
-.fbtn{
+.fbtn {
   margin: 10px;
+}
+.red {
+  color: red;
 }

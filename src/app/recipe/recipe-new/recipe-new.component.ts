@@ -19,7 +19,7 @@ export class RecipeNewComponent implements OnInit {
   public recipeForm: FormGroup = new FormGroup({
     name: new FormControl("", Validators.required),
     imgURL: new FormControl("", Validators.required),
-    originalURL: new FormControl("", Validators.required),
+    originalURL: new FormControl(""),
     ingredients: this.ingredientsArr,
     steps: this.stepsArr,
     timers: this.timersArr
@@ -29,13 +29,10 @@ export class RecipeNewComponent implements OnInit {
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, public router: Router) {
     this.route.params.subscribe(
       (params) => {
-        console.log(params)
         let index = +params['id']
-        console.log(index)
         if (index) {
           this.id = index
           let recipe = recipeService.getRecipeByID(index)
-          console.log(recipe)
           this.displayIngredients(recipe.ingredients);
           this.displaySteps(recipe.steps);
           this.displayTimers(recipe.timers);
@@ -119,7 +116,6 @@ export class RecipeNewComponent implements OnInit {
 
     }
     else {
-      console.log(this.recipeForm.controls);
       this.recipe = {
         id: this.id,
         name: this.recipeForm.controls.name.value,
@@ -129,7 +125,6 @@ export class RecipeNewComponent implements OnInit {
         imageURL: this.recipeForm.controls.imgURL.value,
         originalURL: this.recipeForm.controls.originalURL.value
       }
-      console.log(this.recipe)
       this.recipeService.addNewRecipe(this.recipe)
       // this.newRecipe.emit(this.recipe)
       // this.display.addNewRecipe(this.recipe)

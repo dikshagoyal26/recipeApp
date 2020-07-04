@@ -14,7 +14,6 @@ export class AuthService{
         this.notifier = notifierService;
     }
     registerUser(user:any){
-        console.log(user)
         const {email,password}=user;
         firebase.auth().createUserWithEmailAndPassword(email,password).then(response=>{
             this.router.navigate(['/'])
@@ -24,13 +23,11 @@ export class AuthService{
             this.notifier.notify("success", "SuccessFully Registered!!");
             this.setStatus(true)
         }).catch(err=>{
-            console.log(err)
             this.notifier.notify("error", err);
 
         })
     }
     loginUser(user:any){
-        console.log(user)
         const {email,password}=user;
         firebase.auth().signInWithEmailAndPassword(email,password).then(response=>{
             firebase.auth().currentUser.getIdToken().then((token:string)=>{

@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   async loginUser() {
-    console.log(this.loginForm)
+    // console.log(this.loginForm)
     if (this.loginForm.invalid) {
       return;
     }
@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
       email: this.loginForm.controls.email.value,
       password: this.loginForm.controls.password.value
     }
-    console.log(user)
+    // console.log(user)
     let status: any = await this.authService.loginUser(user)
     if (status == true) {
       this.loginForm.setValue({
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
       })
     }
     else {
-      console.log({ status })
+      // console.log({ status })
       // alert(status)
     }
 

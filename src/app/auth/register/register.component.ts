@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
       email: this.registerForm.controls.email.value,
       password: this.registerForm.controls.password.value
     }
-    console.log(user)
+    // console.log(user)
     this.authService.registerUser(user)
   }
 }

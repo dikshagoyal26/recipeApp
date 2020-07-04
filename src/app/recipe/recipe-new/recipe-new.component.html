@@ -6,7 +6,9 @@
             <h1>Add New Recipe</h1>
             <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Recipe Name</label>
+                    <label class="col-sm-2 col-form-label">Recipe Name
+                        <span class="red">*</span>
+                    </label>
                     <div class="col-sm-10">
 
                         <input type="text" class="form-control" id="recipeName" placeholder="Enter Recipe Name"
@@ -14,7 +16,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Image URL</label>
+                    <label class="col-sm-2 col-form-label">Image URL
+                        <span class="red">*</span>
+                    </label>
                     <div class="col-sm-10">
 
                         <input type="text" class="form-control" id="imgURL" placeholder="Enter Image URL"
@@ -32,7 +36,9 @@
 
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Ingredients</label>
+                    <label class="col-sm-2 col-form-label">Ingredients
+                        <span class="red">*</span>
+                    </label>
                     <div class="col-sm-10">
 
                         <ng-container formArrayName="ingredients" style="margin-top: 20px;">
@@ -64,7 +70,9 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Steps</label>
+                    <label class="col-sm-2 col-form-label">Steps
+                        <span class="red">*</span>
+                    </label>
                     <div class="col-sm-10">
 
                         <div formArrayName="steps">
@@ -87,7 +95,9 @@
 
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Timers</label>
+                    <label class="col-sm-2 col-form-label">Timers
+                        <span class="red">*</span>
+                    </label>
                     <div class="col-sm-10">
 
                         <div formArrayName="timers">
@@ -112,7 +122,8 @@
                 </div>
 
                 <div class="row">
-                    <button type="submit" class="btn btn-success fbtn">Submit</button>
+                    <button type="submit" [ngClass]="{'disabled':this.recipeForm.invalid}"
+                        class="btn btn-success fbtn">Submit</button>
                     <button type="button" class="btn btn-light fbtn" (click)="cancel()">Cancel</button>
                 </div>
 

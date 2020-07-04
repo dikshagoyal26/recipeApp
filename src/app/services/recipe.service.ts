@@ -22,11 +22,9 @@ export class RecipeService {
             this.recipes.push(recipe)
     }
     fetchAllRecipes() {
-        this.http.get('https://recipeapp26.firebaseio.com/create-recipe').subscribe((response:any)=>{
-            this.firebaserecipes=response
-            console.log(this.firebaserecipes)
-        })
-        console.log(recipes)
+        // this.http.get('https://recipeapp26.firebaseio.com/create-recipe').subscribe((response:any)=>{
+        //     this.firebaserecipes=response
+        // })
         return this.recipes.slice()
     }
     getLength() {
@@ -34,6 +32,5 @@ export class RecipeService {
     }
     fetchRecipes(){
         this.firebaserecipes=this.http.get('https://recipeapp26.firebaseio.com/recipes.json')
-        console.log(this.firebaserecipes)
     }
 }

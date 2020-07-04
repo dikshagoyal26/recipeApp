@@ -12,7 +12,6 @@ export class RecipeSearchComponent implements OnInit {
   ngOnInit(): void {
   }
   fetchData() {
-    console.log("fetching")
   }
   betterFunc = this.doSomeMagic(this.fetchData, 300)
   doSomeMagic(fn, delay) {

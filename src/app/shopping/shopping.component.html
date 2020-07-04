@@ -1,20 +1,27 @@
-<div class="container">
+<div class="container" class="mt-5" style="text-align: center;  height: 87vh;">
     <div class="row" *ngIf="ingredients && ingredients.length>0">
-        <div class="col-md-4">
-            <div class="container">
-                <h4>Cart
-                    <span class="quantity" style="color:black">
-                        <i class="fa fa-shopping-cart"></i>
-                        <b>{{ingredients.length}}</b>
-                    </span>
-                </h4>
-                <div *ngFor="let ing of ingredients">
-                    <p>{{ing.name}} <span class="quantity">{{ing.quantity}}</span></p>
-                </div>
+        <div class="offset-md-4 col-md-4 col-sm-12 p-5">
+            <div class="list" style="text-align: center;">
+                <h2 class="mb-5">Shopping List</h2>
+
+                <ol>
+                    <li class="d-flex">
+                        <h4 style="text-align: center;"><b>Items:</b>
+                        </h4>
+                        <p>
+                            <b>Quantity </b>
+                        </p>
+                    </li>
+                    <li *ngFor="let item of result | keyvalue" class="d-flex">
+                        <p>{{item.key}} </p>
+                        <p style="color: gray;" class="quantity">{{item.value}}</p>
+                    </li>
+                </ol>
             </div>
+            <button class="btn btn-success" (click)="download()">Download List</button>
         </div>
     </div>
-    <div *ngIf="!ingredients || ingredients.length==0" class="mt-5" style="text-align: center;  height: 87vh;">
+    <div *ngIf="!ingredients || ingredients.length==0">
         <h2>Nothing in your List!!</h2>
         <a class="btn btn-outline-success" style="width: auto;" routerLink="">Add Items</a>
     </div>

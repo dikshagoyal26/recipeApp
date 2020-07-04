@@ -13,8 +13,7 @@ label {
   font-size: 24px;
 }
 
-span.quantity {
-  float: right;
-  color: grey;
+.d-flex {
+  display: flex;
+  justify-content: space-between;
 }
-

@@ -8,22 +8,31 @@ import { ShoppingService } from '../services/shopping.service';
 })
 export class ShoppingComponent implements OnInit {
   public ingredients: any;
-
+  public result: any;
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
     this.ingredients = this.shoppingService.getIngredients()
     let result = this.ingredients.reduce(function (res, ing) {
       if (ing && ing.name) {
-        let ingr = res[ing.name] || { name: ing.name, quantity: 0 }
+        let ingr = res[ing.name] || 0
         ing.quantity = ing.quantity ? ing.quantity.length > 1 ? (parseInt(ing.quantity.split(' ')[0])) : parseInt(ing.quantity) : 0
-        ingr.quantity = parseInt(ingr.quantity) + ing.quantity
+        ingr = parseInt(ingr) + ing.quantity
         res[ing.name] = ingr;
       }
-
       return res;
     }, Object.create(null));
+    this.result = result
     console.log({ result })
+  }
+  download() {
+    let a = document.createElement('a');
+    let blob = new Blob([JSON.stringify(this.result, null, 2)], { type: "application/octet-stream" });
+    let url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = 'shopping_list';
+    a.click()
+    window.URL.revokeObjectURL(url);
   }
 
 }

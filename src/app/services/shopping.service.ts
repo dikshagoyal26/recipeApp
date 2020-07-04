@@ -13,12 +13,10 @@ export class ShoppingService {
     addToList(recipe: Recipe) {
         this.recipes.push(recipe)
         this.getLength(this.recipes.length)
-        console.log(recipe)
         let ings = recipe.ingredients.map((ing) => {
             return ing.type != 'Drinks' ? { quantity: ing.quantity, name: ing.name } : {}
         })
         this.ingredients = [...this.ingredients, ...ings]
-        console.log({ ings })
     }
     getLength(value: number) {
         this.length.next(value)

@@ -25,7 +25,6 @@ export class RecipeItemComponent implements OnInit {
   ngOnInit(): void {
   }
   viewDetails(id: number) {
-    console.log({ id })
     this.router.navigate([`recipes/details/${id}`])
   }
   addToCart(recipe: Recipe) {

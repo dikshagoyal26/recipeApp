@@ -11,7 +11,6 @@ export class RecipeComponent implements OnInit {
   private readonly notifier: NotifierService;
 
   constructor(private recipeService: RecipeService, notifierService: NotifierService) {
-    this.recipeService.fetchAllRecipes()
     this.notifier = notifierService;
 
   }

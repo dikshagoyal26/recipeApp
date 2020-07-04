@@ -52,8 +52,8 @@ export class AuthService{
         return this.token
     }
     isAuthenticated(){
-        return true
-        // return this.token!==null
+        // return true
+        return this.token!==null
     }
     logOut(){
         this.token=null;

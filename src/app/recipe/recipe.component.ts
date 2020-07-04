@@ -10,14 +10,14 @@ import { NotifierService } from 'angular-notifier';
 export class RecipeComponent implements OnInit {
   private readonly notifier: NotifierService;
 
-  constructor(private recipeService:RecipeService,notifierService: NotifierService) {
+  constructor(private recipeService: RecipeService, notifierService: NotifierService) {
     this.recipeService.fetchAllRecipes()
     this.notifier = notifierService;
 
   }
 
   ngOnInit(): void {
-    this.notifier.notify("success", "You are awesome! I mean it!");
+    this.notifier.notify("success", "Welcome to RecipeApp!");
 
   }
 }

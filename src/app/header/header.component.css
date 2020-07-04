@@ -1,3 +1,23 @@
-.navbar{
-    padding: 1rem;
+.navbar {
+  padding: 1rem;
+}
+
+/* a.cart img{
+    width: 40px;
+    height: 40px;
+    z-index: 3;
+} */
+.cart {
+  position: relative;
+}
+.cart span {
+  left: 37px;
+  position: absolute;
+  top: 0px;
+  background: red;
+  /* right: -7px; */
+  z-index: 1;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 15px;
 }

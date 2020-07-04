@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
     }
     else {
       console.log({ status })
-      alert(status)
+      // alert(status)
     }
 
   }

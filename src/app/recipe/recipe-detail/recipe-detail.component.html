@@ -1,14 +1,14 @@
 <div class="container">
-    <button class="btn btn-primary" (click)="router.navigate(['']);"> Back</button>
+    <button class="btn btn-outline-success" (click)="router.navigate(['']);"> Back</button>
 
     <div class="row">
         <div class="offset-md-2 col-md-8">
-        <h1>{{recipe.name}}</h1>
-    
-        <img [src]="recipe.imageURL">
-        <button class="btn btn-info edit" (click)="editRecipe(recipe.id)"> Edit Recipe</button>
-    
-        <div style="margin-top: 40px;" >
+            <h1>{{recipe.name}}</h1>
+
+            <img [src]="recipe.imageURL">
+            <button class="btn btn-success edit" (click)="editRecipe(recipe.id)"> Edit Recipe</button>
+
+            <div style="margin-top: 40px;">
 
                 <h4>Ingredients :</h4>
                 <ul>
@@ -24,10 +24,10 @@
                         <p>{{step}}</p>
                     </li>
                 </ul>
-               </div>
-                
             </div>
-        
+
         </div>
-         
+
+    </div>
+
 </div>

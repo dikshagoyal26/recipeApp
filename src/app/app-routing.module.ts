@@ -26,12 +26,12 @@ const routes: Routes = [
       {
         path: "edit-recipe/:id",
         component: RecipeNewComponent,
-        canActivate:[AuthGuard]
+        // canActivate:[AuthGuard]
       },
       {
         path: "new-recipe",
         component: RecipeNewComponent,
-        canActivate:[AuthGuard]
+        // canActivate:[AuthGuard]
       },{
         path:"search",
         component:RecipeSearchComponent

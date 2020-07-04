@@ -1,1 +1,21 @@
-<p>shopping works!</p>
+<div class="container">
+    <div class="row" *ngIf="ingredients && ingredients.length>0">
+        <div class="col-md-4">
+            <div class="container">
+                <h4>Cart
+                    <span class="quantity" style="color:black">
+                        <i class="fa fa-shopping-cart"></i>
+                        <b>{{ingredients.length}}</b>
+                    </span>
+                </h4>
+                <div *ngFor="let ing of ingredients">
+                    <p>{{ing.name}} <span class="quantity">{{ing.quantity}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!ingredients || ingredients.length==0" class="mt-5" style="text-align: center;  height: 87vh;">
+        <h2>Nothing in your List!!</h2>
+        <a class="btn btn-outline-success" style="width: auto;" routerLink="">Add Items</a>
+    </div>
+</div>

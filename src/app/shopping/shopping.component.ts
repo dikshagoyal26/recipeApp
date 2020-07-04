@@ -23,14 +23,14 @@ export class ShoppingComponent implements OnInit {
       return res;
     }, Object.create(null));
     this.result = result
-    console.log({ result })
   }
   download() {
     let a = document.createElement('a');
     let blob = new Blob([JSON.stringify(this.result, null, 2)], { type: "application/octet-stream" });
     let url = window.URL.createObjectURL(blob);
     a.href = url;
-    a.download = 'shopping_list';
+    let date = new Date(Date.now())
+    a.download = `shopping_list_${date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()}`;
     a.click()
     window.URL.revokeObjectURL(url);
   }

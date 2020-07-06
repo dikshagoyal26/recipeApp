@@ -26,11 +26,15 @@ export class ShoppingComponent implements OnInit {
   }
   download() {
     let a = document.createElement('a');
-    let blob = new Blob([JSON.stringify(this.result, null, 2)], { type: "application/octet-stream" });
+    let str = ''
+    for (let key in this.result) {
+      str += key + " , " + this.result[key] + '\n'
+    }
+    let blob = new Blob([str], { type: "application/octet-stream" });
     let url = window.URL.createObjectURL(blob);
     a.href = url;
     let date = new Date(Date.now())
-    a.download = `shopping_list_${date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()}`;
+    a.download = `shopping_list_${date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear()}.csv`;
     a.click()
     window.URL.revokeObjectURL(url);
   }

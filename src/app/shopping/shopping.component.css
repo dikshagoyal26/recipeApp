@@ -1,5 +1,8 @@
 .container {
-  height: 100%;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 label {
@@ -16,4 +19,14 @@ label {
 .d-flex {
   display: flex;
   justify-content: space-between;
+}
+ol {
+  padding: 0;
+}
+.card {
+  max-width: 460px;
+}
+.disp-flex {
+  display: flex;
+  justify-content: center;
 }
